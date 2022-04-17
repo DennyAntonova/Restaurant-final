@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit receipt</title>
+</head>
+<body>
+<h1>Edit receipt</h1>
+<form th:action="@{/receipt-update/{id}(id=${receipt.id})}" method="post" th:object="${receipt}">
+    <div>
+        ID <input type="number" th:field="*{id}">
+
+    </div>
+    <div>
+        Order Id <input type="number" th:field="*{orderId}">
+    </div>
+    <div>
+        Menu Id <input type="number" th:field="*{menuId}">
+    </div>
+    <div>
+        Quantity <input type="number" th:field="*{quantity}">
+    </div>
+    <div>
+        Total amount <input type="number" th:field="*{totalAmount}">
+    </div>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

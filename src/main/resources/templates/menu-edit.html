@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Edit menu</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+<h1>Edit menu</h1>
+<form th:action="@{/menu-update/{id}(id=${menu.id})}" method="post" th:object="${menu}">
+    <div>
+        Name <input type="text" th:field="*{name}">
+
+    </div>
+    <div>
+        Price <input type="number" th:field="*{price}">
+    </div>
+    <div>
+        Type <input type="text" th:field="*{menuType}">
+    </div>
+
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

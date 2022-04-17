@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new product in receipt</title><link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add new product in order</title>
+</head>
+<body>
+
+<form th:action="@{/receipt-create}" th:object="${receipt}" method="post" style="margin-left: 40%">
+    <h1>Add new product in order</h1>
+
+    <table>
+        <tr>
+            <td>Menu ID:</td>
+            <td><input type="number" th:field="*{menuId}"/></td>
+            <td th:if="#{field.hasErrors('menuId')}" th:errors="*{menuId}"></td>
+        </tr>
+        <tr>
+            <td>Order ID:</td>
+            <td><input type="number" th:field="*{orderId}"/></td>
+            <td th:if="${#fields.hasErrors('orderId')}" th:errors="*{orderId}"></td>
+        </tr>
+
+        <tr>
+            <td>Quantity</td>
+            <td><input type="text" th:field="*{quantity}"/></td>
+            <td th:if="#{field.hasErrors('quantity')}" th:errors="*{quantity}">Error in the additional info</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" value="save">Submit</button>
+                <a th:href="@{'/home'}">
+                    <button type="button">Return to main Page</button>
+                </a>
+            </td>
+
+            <td>
+
+            </td>
+
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

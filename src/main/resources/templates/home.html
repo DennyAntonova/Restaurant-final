@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main menu</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<style>
+        .center {
+            margin: auto;
+            width: 35%;
+            border: 1px solid blue;
+            padding: 10px;
+        }
+
+
+
+</style>
+<body>
+<div class="container text-center">
+    <div align="center">
+        <div>
+
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
+    </div>
+    <h2>Main menu</h2>
+    <td sec:authorize="hasRole('ROLE_COOK')">
+        <a href="/order-list"><input type="button" value="Change order status"></a>
+    </td>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_COOK')">
+        <a href="/new-orders"><input type="button" value="List new orders"></a>
+    </td>
+    <br/>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/sort-menu"><input type="button" value="Menu"></a>
+    </td>
+    <br/>
+
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/menu-create"><input type="button" value="Add product in menu"></a>
+    </td>
+    <br/>
+
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/menu-list"><input type="button" value="Change menu - add, change, delete products"></a>
+    </td>
+    <br/>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/order-list"><input type="button" value="All orders"></a>
+    </td>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/order-create"><input type="button" value="Create order on table"></a>
+    </td>
+    <br/>
+
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/active-orders"><input type="button" value="List of active orders"></a>
+    </td>
+
+    <br/>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/receipt-list"><input type="button" value="All receipts"></a>
+    </td>
+
+    <br/>
+
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/receipt-create"><input type="button" value="Create receipt"></a>
+    </td>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/sort-table-by-date-DESC"><input type="button" value="Sort restaurant table by date descending"></a>
+    </td>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/sort-table-by-date-ASC"><input type="button" value="Sort restaurant table by date ascending"></a>
+    </td>
+    <br/>
+    <td sec:authorize="hasRole('ROLE_WAITER')">
+        <a href="/order-list"><input type="button" value="Filter restaurant table by date"></a>
+    </td>
+
+
+</body>
+</html>

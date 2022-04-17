@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new order</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<form th:action="@{/order-create}" th:object="${order}" method="post" style="margin-left: 40%">
+    <h1>Add new order</h1>
+
+    <table>
+        <tr>
+            <td>Restaurant table:</td>
+            <td><select name="restaurantTable">
+                <option value="ONE"> 1</option>
+                <option value="TWO"> 2</option>
+                <option value="THREE"> 3</option>
+                <option value="FOUR"> 4</option>
+                <option value="FIVE"> 5</option>
+            </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Status</td>
+            <td><select name="status">
+                <option value="CREATED"> CREATED</option>
+                <option value="GET_READY"> GET_READY</option>
+                <option value="PREPARED"> PREPARED</option>
+                <option value="SERVED"> SERVED</option>
+                <option value="PAID"> PAID</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td>User Id:</td>
+            <td><select name="userId">
+                <option value="1"> Ivan Petrov</option>
+                <option value="2"> Maria Petrova</option>
+            </select>
+            </td>
+        </tr>
+
+        <td>
+            <button type="submit" value="save">Submit</button>
+        </td>
+
+        <td>
+            <a th:href="@{'/home'}">
+                <button type="button">Return to main Page</button>
+            </a>
+        </td>
+
+
+
+    </table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title><link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+
+        <form th:action="@{/logout}" method="post">
+
+            <input type="submit" value="Sign Out" />
+
+        </form>
+    </div>
+    <div>
+
+        <h1>Summary receipt</h1>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle">
+        </table>
+    </div>
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="blue">
+            <tr>
+                <th> ID</th>
+                <th> Order ID</th>
+                <th>Menu Id</th>
+                <th>Quantity</th>
+                <th>Total amount</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="receipt: ${receipt}">
+                <td th:text="${receipt.id}">Menu ID</td>
+                <td th:text="${receipt.orderId}">Name</td>
+                <td th:text="${receipt.menuId}">Price</td>
+                <td th:text="${receipt.quantity}">Type</td>
+                <td th:text="${receipt.totalAmount}">Type</td>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+        <a th:href="@{'/home'}">
+            <button type="button">Return to main Page</button>
+        </a>
+    </div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new product in menu</title><link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add new product in menu</title>
+</head>
+<body>
+
+<form th:action="@{/menu-create}" th:object="${menu}" method="post" style="margin-left: 40%">
+
+    <H1 th:inline="text"> Add product in menu list</H1>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="#{field.hasErrors('name')}" th:errors="*{name}">Error in the name</td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="number" th:field="*{price}"/></td>
+            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><select name="menuType">
+                <option value="DRINKS"> DRINKS</option>
+                <option value="DISHES"> DISHES</option>
+            </select>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <button type="submit" value="save">Submit</button>
+                <a th:href="@{'/home'}">
+                    <button type="button">Return to main Page</button>
+                </a>
+            </td>
+
+            <td>
+
+            </td>
+
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

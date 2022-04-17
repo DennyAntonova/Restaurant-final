@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change order status</title>
+</head>
+<body>
+<h1>Change order status</h1>
+<form th:action="@{/order-update/{id}(id=${order.id})}" method="post" th:object="${order}">
+    <div>
+        Order Id <input type="number" th:field="*{id}">
+    </div>
+    <div >
+
+        <td>Status</td>
+        <td><select name="status">
+
+            <option sec:authorize="hasRole ('ROLE_WAITER')"value="CREATED"> CREATED</option>
+            <option sec:authorize="hasRole ('ROLE_WAITER')" value="SERVED"> SERVED</option>
+            <option sec:authorize="hasRole ('ROLE_WAITER')" value="PAID"> PAID</option>
+            <option sec:authorize="hasRole ('ROLE_COOK')" value="GET_READY"> GET_READY</option>
+            <option sec:authorize="hasRole ('ROLE_COOK')" value="PREPARED"> PREPARED</option>
+
+
+        </select>
+    </div>
+
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>
