@@ -92,13 +92,13 @@ public class ReceiptController {
     public String allReceipts(Model model) {
         List<Receipt> allReceipts = receiptRepository.findAll();
         model.addAttribute("receipt", allReceipts);
-        return "redirect:/receipt-list";
-    }
-
-    @PostMapping ( "/summary-receipt/{orderId}" )
-    public String summaryReceipt(@PathVariable long orderId, Model model) {
-        List<Receipt> receipt = receiptRepository.findByOrderId(orderId);
-        model.addAttribute("receipt", receipt);
         return "receipt-list";
     }
+
+//    @PostMapping ( "/summary-receipt/{orderId}" )
+//    public String summaryReceipt(@PathVariable long orderId, Model model) {
+//        List<Receipt> receipt = receiptRepository.findByOrderId(orderId);
+//        model.addAttribute("receipt", receipt);
+//        return "receipt-list";
+//    }
 }
