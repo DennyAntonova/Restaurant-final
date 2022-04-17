@@ -33,7 +33,8 @@
             <tr sec:authorize="hasRole('ROLE_WAITER')" >
                 <a  th:href="@{/order-create}">Add new order</a>
             </tr>
-            <form th:action="@{/order-list}">
+
+            <form sec:authorize="hasRole('ROLE_WAITER')" th:action="@{/order-list}">
                 Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required/>
                 &nbsp;
                 <input type="submit" value="Search"/>

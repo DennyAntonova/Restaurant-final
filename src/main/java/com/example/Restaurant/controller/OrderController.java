@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class OrderController {
     @Autowired
     private ReceiptRepository receiptRepository;
 
-   @Autowired
+    @Autowired
     private OrderService service;
 
     @GetMapping ( "/order-create" )
@@ -103,30 +104,34 @@ public class OrderController {
     @GetMapping ( "/active-orders" )
     public String allOrdersFilter(Model model) {
         List<Order> allOrders = orderRepository.findAll();
+        List<Order> newAllOrders = new ArrayList<>();
         for (int i = 0; i < allOrders.size(); i++) {
-            if (Objects.equals(allOrders.get(i).getStatus(), StatusOrder.PAID)) {
-                allOrders.remove(allOrders.get(i));
-                model.addAttribute("order", allOrders);
+            if (!Objects.equals(allOrders.get(i).getStatus(), StatusOrder.PAID)) {
+                newAllOrders.add(allOrders.get(i));
+                model.addAttribute("order", newAllOrders);
             }
         }
-        model.addAttribute("order", allOrders);
+        model.addAttribute("order", newAllOrders);
         return "active-orders";
     }
 
     @GetMapping ( "/new-orders" )
     public String allNewOrders(Model model) {
         List<Order> allOrders = orderRepository.findAll();
+        List<Order> newAllOrders = new ArrayList<>();
         for (int i = 0; i < allOrders.size(); i++) {
 
-            if (!allOrders.get(i).getStatus().equals(StatusOrder.CREATED)) {
-                allOrders.add(allOrders.get(i));
-                model.addAttribute("order", allOrders);
+            if (Objects.equals(allOrders.get(i).getStatus(), StatusOrder.CREATED)) {
+                newAllOrders.add(allOrders.get(i));
+                model.addAttribute("allOrders", newAllOrders);
             }
+
         }
-        model.addAttribute("order", allOrders);
+       model.addAttribute("allOrders", newAllOrders);
         return "new-orders";
     }
-    @GetMapping("/sort-orders")
+
+    @GetMapping ( "/sort-orders" )
     public String sortOrders(Model model) {
         List<Order> listOrders = orderRepository.findAll();
         model.addAttribute("listOrders", listOrders);
@@ -148,7 +153,7 @@ public class OrderController {
         return "sort-orders";
     }
 
-    @RequestMapping( "/order-list" )
+    @RequestMapping ( "/order-list" )
     public String searchByDate(Model model, @Param ( "keyword" ) String keyword) {
         List<Order> listRestaurantTable = service.listAll(keyword);
         model.addAttribute("listRestaurantTable", listRestaurantTable);

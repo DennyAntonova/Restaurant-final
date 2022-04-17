@@ -18,5 +18,4 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query ( "SELECT p FROM Order p WHERE p.dateAndTime LIKE %?1%")
     public List <Order> search (String keyword );
 
-
 }

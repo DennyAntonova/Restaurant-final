@@ -41,7 +41,7 @@
             </thead>
 
             <tbody>
-            <tr th:each="order: ${order}">
+            <tr th:each="order: ${allOrders}">
 
                 <td th:text="${order.id}"></td>
                 <td th:text="${order.restaurantTable}"></td>
