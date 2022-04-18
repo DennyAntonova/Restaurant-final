@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <td>Price:</td>
-            <td><input type="number" th:field="*{price}"/></td>
+            <td><input type="number" step = .01 th:field="*{price}"/></td>
             <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</td>
         </tr>
         <tr>
